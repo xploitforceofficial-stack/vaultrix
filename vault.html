@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAULTRIX | Secure Vault</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="vault-page">
+    <div class="container">
+        <div class="vault-header">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1 class="logo-text">VAULTRIX</h1>
+            </div>
+            <div class="access-status">
+                <div class="status-indicator active"></div>
+                <span>SESSION ACTIVE</span>
+            </div>
+        </div>
+
+        <div class="vault-content">
+            <div class="unlocked-container">
+                <div class="unlocked-icon">✅</div>
+                <h2 class="status-title">VAULT STATUS: UNLOCKED</h2>
+                <p class="status-description">
+                    Access granted to protected resources.<br>
+                    Session will expire automatically.
+                </p>
+
+                <div class="loader-container">
+                    <div class="loader-header">
+                        <span class="loader-icon">📋</span>
+                        <h3>Script Loader</h3>
+                    </div>
+                    <div class="code-display" id="scriptDisplay">
+                        <!-- Script will be injected here by JavaScript -->
+                    </div>
+                    <button id="copyLoader" class="copy-button">
+                        COPY LOADER
+                    </button>
+                    <div class="copy-status" id="copyStatus"></div>
+                </div>
+
+                <div class="security-notes">
+                    <div class="note">
+                        <span class="note-icon">⚠️</span>
+                        <span>Do not redistribute. Access is session-bound.</span>
+                    </div>
+                    <div class="note">
+                        <span class="note-icon">⏱️</span>
+                        <span>Session expires in <span id="expiryTimer">60:00</span></span>
+                    </div>
+                    <div class="note">
+                        <span class="note-icon">🔐</span>
+                        <span>Integrity checks active. Tampering will revoke access.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="vault-footer">
+            <div class="footer-text">
+                VAULTRIX Protection Active | Session ID: <span id="sessionId">--</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="vaultrix.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+            
+            // Basic anti-inspect protection
+            document.onkeydown = function(e) {
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                    (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
+                }
+            };
+            
+            // Initialize vault page
+            VAULTRIX.initializeVault();
+        });
+    </script>
+</body>
+</html>
