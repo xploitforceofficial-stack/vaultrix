@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAULTRIX | Access Gateway</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="gateway-page">
+    <div class="container">
+        <div class="gateway-header">
+            <div class="logo-small">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">VAULTRIX</span>
+            </div>
+            <div class="gateway-title">ACCESS GATEWAY</div>
+        </div>
+
+        <div class="validation-container">
+            <div class="validation-card">
+                <div class="validation-header">
+                    <div class="validation-icon">🔐</div>
+                    <h2>Session Validation</h2>
+                </div>
+                
+                <div class="validation-progress">
+                    <div class="progress-label">Initializing Security Protocols</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-percentage" id="progressPercentage">0%</div>
+                </div>
+
+                <div class="validation-steps">
+                    <div class="step" id="step1">
+                        <span class="step-icon">1</span>
+                        <span class="step-text">Token Authentication</span>
+                        <span class="step-status" id="status1">⏳</span>
+                    </div>
+                    <div class="step" id="step2">
+                        <span class="step-icon">2</span>
+                        <span class="step-text">Time Validation</span>
+                        <span class="step-status" id="status2">⏳</span>
+                    </div>
+                    <div class="step" id="step3">
+                        <span class="step-icon">3</span>
+                        <span class="step-text">Session Integrity</span>
+                        <span class="step-status" id="status3">⏳</span>
+                    </div>
+                    <div class="step" id="step4">
+                        <span class="step-icon">4</span>
+                        <span class="step-text">Checksum Verification</span>
+                        <span class="step-status" id="status4">⏳</span>
+                    </div>
+                </div>
+
+                <div class="validation-message" id="validationMessage">
+                    Processing access request...
+                </div>
+            </div>
+        </div>
+
+        <div class="security-notice">
+            <div class="notice-icon">ℹ️</div>
+            <div class="notice-text">
+                This gateway validates session integrity and access permissions.<br>
+                Do not refresh or navigate away during validation.
+            </div>
+        </div>
+    </div>
+
+    <script src="vaultrix.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+            
+            // Basic anti-inspect protection
+            document.onkeydown = function(e) {
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                    (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
+                }
+            };
+            
+            // Start validation process
+            VAULTRIX.validateAccess();
+        });
+    </script>
+</body>
+</html>
