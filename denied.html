@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAULTRIX | Access Denied</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="denied-page">
+    <div class="container">
+        <div class="denied-header">
+            <div class="logo-small">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">VAULTRIX</span>
+            </div>
+        </div>
+
+        <div class="denied-content">
+            <div class="denied-icon">⛔</div>
+            <h1 class="denied-title">ACCESS REJECTED</h1>
+            <p class="denied-message">
+                Session integrity failed or expired.<br>
+                Access request has been logged.
+            </p>
+
+            <div class="denied-reasons">
+                <h3>Possible Reasons:</h3>
+                <ul>
+                    <li>Invalid or expired access token</li>
+                    <li>Session tampering detected</li>
+                    <li>Browser fingerprint mismatch</li>
+                    <li>Time validation failed</li>
+                </ul>
+            </div>
+
+            <div class="redirect-notice">
+                <div class="spinner"></div>
+                <p>Redirecting to VAULTRIX portal in <span id="countdown">5</span> seconds...</p>
+            </div>
+        </div>
+
+        <footer class="denied-footer">
+            <div class="footer-text">
+                VAULTRIX Security System | Unauthorized access prevented
+            </div>
+        </footer>
+    </div>
+
+    <script src="vaultrix.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start countdown
+            let countdown = 5;
+            const countdownElement = document.getElementById('countdown');
+            
+            const timer = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    window.location.href = 'landing.html';
+                }
+            }, 1000);
+            
+            // Auto redirect after 5 seconds
+            setTimeout(() => {
+                window.location.href = 'landing.html';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
