@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAULTRIX | Script Access, Reinvented.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+    <div class="container">
+        <div class="brand-header">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1 class="logo-text">VAULTRIX</h1>
+            </div>
+            <div class="tagline">Script Access, Reinvented.</div>
+        </div>
+
+        <div class="content">
+            <div class="security-card">
+                <div class="card-icon">⚙️</div>
+                <h2>Access Layer Activated</h2>
+                <p class="security-description">
+                    This script is sealed behind an independent access layer.<br>
+                    Unauthorized attempts are logged and prevented.
+                </p>
+                <div class="security-features">
+                    <div class="feature">
+                        <span class="feature-icon">🔒</span>
+                        <span>Client-Side Validation</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">⏱️</span>
+                        <span>Time-Bound Access</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌐</span>
+                        <span>Session Integrity</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="access-control">
+                <p class="warning-note">
+                    <span class="warning-icon">⚠️</span>
+                    Access is restricted to authorized sessions only
+                </p>
+                <button id="initiateAccess" class="access-button">
+                    INITIATE ACCESS
+                </button>
+                <p class="small-note">
+                    You will be redirected to the validation gateway
+                </p>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-text">
+                VAULTRIX Protection System v1.0 | Client-Side Web-Lock Technology
+            </div>
+        </footer>
+    </div>
+
+    <script src="vaultrix.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+            
+            // Basic anti-inspect protection
+            document.onkeydown = function(e) {
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                    (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    return false;
+                }
+            };
+            
+            // Initialize access button
+            document.getElementById('initiateAccess').addEventListener('click', function() {
+                const token = VAULTRIX.generateAccessToken();
+                window.location.href = `gateway.html?token=${token}`;
+            });
+        });
+    </script>
+</body>
+</html>
